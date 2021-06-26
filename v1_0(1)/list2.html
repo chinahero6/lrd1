@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+        <title>课表</title>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            table,
+            th,
+            td {
+                border: 1px solid black;
+                min-width: 5em;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div style="width: 45%; align-items: center; margin:0px auto;">
+            <table id="data_table" 
+                class="table table-bordered table-striped" >
+                <thead>
+                    <tr>
+                        <th data-field="name" style="width: 30%">课程名</th>
+                        <th data-field="time" style="width: 40%">课程时间</th>
+                        <th data-field="grade" style="width: 30%">成绩</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items3 %}
+                    <tr>
+                        <td>{{ item[0] }}</td>
+                        <td>{{ item[1] }}</td>
+                        <td>{{ item[2]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <form action="/student" method="get" >
+            <div class="form-group" style="text-align: center"><button type="submit" class="btn btn-primary">返回</button></div>
+        </form>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap-4.3.1.js"></script>
+        <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.js"></script>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+        <title>成绩单</title>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            table,
+            th,
+            td {
+                border: 1px solid black;
+                min-width: 5em;
+            }
+        </style>
+    </head>
+
+    <body>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div  style="width: 50%; text-align:center; align-items: center; margin:0px auto;">
+        
+        <table id="student_table" 
+        class="table table-bordered table-striped" 
+        style="text-align: center" >
+        <thead>
+            <tr>
+                <th data-field="id" data-sortable="true" style="width: 30%">姓名：{{ items2[0][0] }}</th>
+                <th data-field="name" data-sortable="true" style="width: 40%">学号:{{ items2[0][1] }}</th>
+                <th data-field="code" data-sortable="true" style="width: 30%">班级：{{ items2[0][2]}}</th>
+            </tr>
+        </thead>
+    </table>
+    <br><br><br>
+        <div style="width: 300px; align-items: center; margin:0px auto;">
+            <form action="/student/semester" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="semester_input" name="semester" placeholder="请输入查询学期">
+                </div>
+                
+                <div style="text-align: center"><button type="submit" class="btn btn-primary">显示查询结果</button></div>
+            </form>
+        </div>
+
+        <div style="width: 90%; align-items: center; margin:0px auto;">
+            <table id="data_table" 
+                class="table table-bordered table-striped" >
+                <thead>
+                    <tr>
+                        <th data-field="name" data-sortable="true" style="width: 5%">课程名</th>
+                        <th data-field="time" data-sortable="true" style="width: 50%">课程时间</th>
+                        <th data-field="grade" data-sortable="true" style="width: 15%">成绩</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items2 %}
+                    <tr>
+                        <td>{{ item[3] }}</td>
+                        <td>{{ item[4] }}</td>
+                        <td>{{ item[5]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <form action="/logout" method="post" >
+            <div class="form-group" style="text-align: center"><button type="submit" class="btn btn-primary">退出登录</button></div>
+        </form>
+        </div>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap-4.3.1.js"></script>
+        <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.js"></script>
+    </body>
+</html>
